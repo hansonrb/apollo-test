@@ -1,0 +1,8 @@
+.box= render 'post', post: @post
+.box#comments
+
+:javascript
+  window.state = window.state || {};
+  window.state.postId = #{@post.id};
+
+= javascript_pack_tag 'comments'

@@ -1,0 +1,5 @@
+%article.post
+  %h2= link_to post.title, post_path(post)
+  .url= link_to post.url, post.url, target: '_blank'
+  .tagline= post.tagline
+  %footer by #{post.user.name} - #{post.comments_count} comments

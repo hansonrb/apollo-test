@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %title Kittynews
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  %body
+    %header.box.header
+      .home= link_to 'Home', root_path
+      .session
+        - if user_signed_in?
+          %span Hi #{current_user.name},
+          = link_to 'Logout', destroy_user_session_path, data: { method: :delete }
+        - else
+          = link_to 'Login', new_user_session_path
+    - if alert.present? || notice.present?
+      .notice= alert || notice
+    %section.content
+      = yield
